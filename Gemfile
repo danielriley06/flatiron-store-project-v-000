@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2'
-gem 'sass-rails', '4.0.2'
+gem 'sass-rails'
+gem 'sprockets-rails', '~> 2.3.2'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'devise'
@@ -26,6 +27,6 @@ group :test, :development do
   gem "thin"
 end
 
-gem "bootstrap-sass", "~> 3.1.1"
+gem 'bootstrap', '~> 4.0.0.alpha3'
 gem "faker"
 gem "friendly_id"

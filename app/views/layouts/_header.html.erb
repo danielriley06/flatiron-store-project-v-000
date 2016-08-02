@@ -1,8 +1,28 @@
-<nav class="">
-    <ul>
-        <li> <%= link_to "Store Home", store_path %> </li>
-        <% if !!@cart %>
-          <li> <%= link_to "Cart", cart_path(current_cart) %></li>
+<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+  <div class="container">
+  <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2" aria-controls="exCollapsingNavbar2" aria-expanded="false" aria-label="Toggle navigation">
+    &#9776;
+  </button>
+  <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
+    <a class="navbar-brand" href="#">Flatiron Store</a>
+    <ul class="nav navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Store Home <span class="sr-only">(current)</span></a>
+      </li>
+      <% if !user_signed_in? %>
+          <li><%= link_to "Sign in", new_user_session_path %></li>
+          <li><%= link_to "Sign up", new_user_registration_path %></li>
+        <% else %>
+          <li>Signed in as <%= current_user.email %></li>
+          <li><%= link_to "Sign out", destroy_user_session_path, method: "delete" %></li>
         <% end %>
+
+      <% if current_user && current_user.current_cart %>
+      <ul class="nav navbar-nav navbar-right" align="right">
+        <li> <%= link_to "Cart", cart_path(current_user.current_cart) %></li>
+      </ul>
+      <% end %>
     </ul>
+  </div>
+</div>
 </nav>
